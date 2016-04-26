@@ -2,20 +2,26 @@ package less11.classwork.game;
 
 import java.util.Arrays;
 
-public class Board {
+class Board {
 
     private char[][] board = new char[3][3];
     private char currentPlayer;
+    private byte countsMoves;
 
-    public Board() {
+    Board() {
         for (int i = 0; i < 3; i++) {
             Arrays.fill(board[i], ' ');
         }
         currentPlayer = 'X';
+        countsMoves = 0;
     }
 
-    public boolean gameFinished() {
-		char ch = getWinnerPlayer();
+    boolean gameFinished() {
+
+        if (countsMoves == 9) return true;
+
+        char ch = currentPlayer == 'X' ? 'O' : 'X';
+
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == ch && board[i][1] == ch && board[i][2] == ch)
                 return true;
@@ -35,7 +41,7 @@ public class Board {
         return false;
     }
 
-    public boolean makeMove(String move) {
+    boolean makeMove(String move) {
         int x = Character.getNumericValue(move.charAt(0)) - 1;
         int y = Character.getNumericValue(move.charAt(1)) - 1;
 
@@ -43,6 +49,7 @@ public class Board {
 			return false;
 		
 		board[x][y] = currentPlayer;
+        countsMoves++;
         changeCurrentPlayer();
         return true;
     }
@@ -54,15 +61,18 @@ public class Board {
             currentPlayer = 'X';
     }
 
-    public char getCurrentPlayer() {
+    char getCurrentPlayer() {
         return currentPlayer;
     }
 	
-	public char getWinnerPlayer() {
+	String getWinnerPlayer() {
+        if (countsMoves == 9)
+            return "not defined";
+
 		if (currentPlayer == 'X')
-			return 'O';
+			return "O";
 		else
-			return 'X';
+			return "X";
     }
 
     private boolean isMoveValid(int x, int y) {
@@ -73,14 +83,14 @@ public class Board {
         return true;
     }
 
-    public void printBoard() {
-		System.out.println("-------");
+    void printBoard() {
+//		System.out.println("-------");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                System.out.print("|" + board[i][j]);
+                System.out.print("[" + board[i][j] + "]");
             }
-            System.out.print("|\n");
-            System.out.println("-------");
+//            System.out.print("|\n");
+            System.out.println();
         }
     }
 

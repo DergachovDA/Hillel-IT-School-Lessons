@@ -1,4 +1,4 @@
-package less11.classwork.Game;
+package less11.classwork.game;
 import java.util.Scanner;
 
 public class TicTacToe {
