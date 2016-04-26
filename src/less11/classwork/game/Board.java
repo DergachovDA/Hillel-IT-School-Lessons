@@ -20,7 +20,7 @@ class Board {
 
         if (countsMoves == 9) return true;
 
-        char ch = currentPlayer == 'X' ? 'O' : 'X';
+        char ch = (currentPlayer == 'X') ? 'O' : 'X';
 
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == ch && board[i][1] == ch && board[i][2] == ch)
@@ -66,30 +66,22 @@ class Board {
     }
 	
 	String getWinnerPlayer() {
-        if (countsMoves == 9)
+        if (countsMoves == 9) {
             return "not defined";
-
-		if (currentPlayer == 'X')
-			return "O";
-		else
-			return "X";
+        } else {
+            return currentPlayer == 'X' ? "O" : "X";
+        }
     }
 
     private boolean isMoveValid(int x, int y) {
-        if (x > 2 || y > 2 || x < 0 || y < 0)
-            return false;
-		if (board[x][y] != ' ')
-			return false;
-        return true;
+        return  !(x > 2 || y > 2 || x < 0 || y < 0 || board[x][y] != ' ');
     }
 
     void printBoard() {
-//		System.out.println("-------");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print("[" + board[i][j] + "]");
             }
-//            System.out.print("|\n");
             System.out.println();
         }
     }

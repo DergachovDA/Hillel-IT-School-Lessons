@@ -15,7 +15,7 @@ public class TicTacToe {
             System.out.println("Enter your move: ");
             String move = scanner.next();
             if (!board.makeMove(move))
-                System.out.println("Input incorrect/ Repeat your move.");
+                System.out.println("Input incorrect! Repeat your move.");
             board.printBoard();
         }
 
