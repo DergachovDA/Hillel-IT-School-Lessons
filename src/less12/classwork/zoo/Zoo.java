@@ -1,10 +1,5 @@
 package less12.classwork.zoo;
 
-import less12.classwork.zoo.Animal;
-import less12.classwork.zoo.Cat;
-import less12.classwork.zoo.Dog;
-import less12.classwork.zoo.Parrot;
-
 public class Zoo {
 
     public static void main(String[] args) {

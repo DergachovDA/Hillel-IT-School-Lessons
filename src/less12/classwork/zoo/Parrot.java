@@ -1,7 +1,5 @@
 package less12.classwork.zoo;
 
-import less12.classwork.zoo.Animal;
-
 public class Parrot extends Animal {
 
     Parrot() {
