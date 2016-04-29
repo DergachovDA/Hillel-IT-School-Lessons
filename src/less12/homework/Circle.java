@@ -17,7 +17,7 @@ public class Circle extends Shape{
     }
 
     public void print() {
-        System.out.println("The circle with a radius: " + radius + ".");
+        System.out.println("The circle with a radius: " + radius);
     }
 
 
