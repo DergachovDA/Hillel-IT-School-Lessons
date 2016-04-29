@@ -1,11 +1,11 @@
 package less12.homework;
 
-public abstract class Shape {
+interface Shape {
 
-    public abstract double getArea();
+    double getArea();
 
-    public abstract double getPerimeter();
+    double getPerimeter();
 
-    public abstract void print();
+    void print();
 
 }

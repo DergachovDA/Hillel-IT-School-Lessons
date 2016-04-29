@@ -1,15 +1,15 @@
 package less12.homework;
 
-public class Circle extends Shape{
+class Circle implements Shape {
 
-    int radius;
+    private int radius;
 
     Circle(int radius) {
         this.radius = radius;
     }
 
     public double getArea() {
-        return 2 * Math.PI * Math.pow(radius, 2);
+        return Math.PI * Math.pow(radius, 2);
     }
 
     public double getPerimeter() {
