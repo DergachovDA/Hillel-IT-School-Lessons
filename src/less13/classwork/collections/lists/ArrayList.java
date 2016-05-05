@@ -1,5 +1,7 @@
 package less13.classwork.collections.lists;
 
+import java.util.Iterator;
+
 public class ArrayList implements List {
 
     private static final int INITIAL_CAPACITY = 10;
@@ -65,7 +67,12 @@ public class ArrayList implements List {
     }
 
     public void remove(int index) {
-
+        for (int i = index; i < size; i++) {
+            array[i] = array[i + 1];
+        }
+        array[size] = null;
+        size--;
+        resize();
     }
 
     public void remove(String element) {
@@ -77,10 +84,60 @@ public class ArrayList implements List {
     }
 
     public int indexOf(String element) {
-        return 0;
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(element))
+                return i;
+        }
+        return -1;
     }
 
     public String get(int index) {
-        return null;
+        return array[index];
     }
+
+    public String toString() {
+        String out = "[ ";
+        for (int i = 0; i < size; i++) {
+            out += array[i];
+            if (i != size - 1)
+                out += ", ";
+        }
+        out += " ]";
+        return out;
+    }
+
+    public Iterator listIterator() {
+        return new ListIterator();
+    }
+
+    public BackwardListIterator backwardListIterator() {
+        return new BackwardListIterator(array, size);
+    }
+
+    private class ListIterator implements Iterator {
+
+        private int current = 0;
+
+        public boolean hasNext() {
+            return current < size;
+        }
+
+        public Object next() {
+            String element = array[current];
+            current++;
+            return element;
+        }
+    }
+
+    private class RandomIterator implements Iterator {
+
+        public boolean hasNext() {
+            return false;
+        }
+
+        public Object next() {
+            return null;
+        }
+    }
+
 }

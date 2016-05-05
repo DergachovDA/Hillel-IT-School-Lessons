@@ -1,5 +1,7 @@
 package less13.classwork.collections.lists;
 
+import java.util.Iterator;
+
 public interface List {
 
     int size();
@@ -21,5 +23,9 @@ public interface List {
     int indexOf(String element);
 
     String get(int index);
+
+    Iterator listIterator();
+
+    BackwardListIterator backwardListIterator();
 
 }
