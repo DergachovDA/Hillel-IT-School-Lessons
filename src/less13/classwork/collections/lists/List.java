@@ -26,6 +26,8 @@ public interface List {
 
     Iterator listIterator();
 
-    BackwardListIterator backwardListIterator();
+    Iterator backwardListIterator();
+
+    Iterator randomIterator();
 
 }

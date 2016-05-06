@@ -1,6 +1,7 @@
 package less13.classwork.collections.lists;
 
 import java.util.Iterator;
+import java.util.Random;
 
 public class ArrayList implements List {
 
@@ -110,8 +111,12 @@ public class ArrayList implements List {
         return new ListIterator();
     }
 
-    public BackwardListIterator backwardListIterator() {
-        return new BackwardListIterator(array, size);
+    public Iterator backwardListIterator() {
+        return new BackwardListIterator();
+    }
+
+    public Iterator randomIterator() {
+        return new RandomIterator();
     }
 
     private class ListIterator implements Iterator {
@@ -129,15 +134,59 @@ public class ArrayList implements List {
         }
     }
 
-    private class RandomIterator implements Iterator {
+    private class BackwardListIterator implements Iterator {
+
+        private int current = size - 1;
 
         public boolean hasNext() {
-            return false;
+            return current > -1;
         }
 
         public Object next() {
-            return null;
+            String element = array[current];
+            current--;
+            return element;
         }
+    }
+
+    private class RandomIterator implements Iterator {
+
+        private int current;
+        private int[] indexArray;
+
+        RandomIterator() {
+            current = size - 1;
+            indexArray = new int[size];
+            for (int i = 0; i < indexArray.length; i++) {
+                indexArray[i] = i;
+            }
+        }
+
+        public boolean hasNext() {
+            return current > -1;
+        }
+
+        public Object next() {
+            int index = getNextRandomIndex(current);
+            String element = array[indexArray[index]];
+            setIndex(index);
+            current--;
+            return element;
+        }
+
+        private int getNextRandomIndex(int current) {
+            if (current == 0) return 0;
+            Random random = new Random();
+            int nextRandomIndex = random.nextInt(current);
+            return nextRandomIndex;
+        }
+
+        private void setIndex(int index) {
+            int temp = indexArray[current];
+            indexArray[current] = indexArray[index];
+            indexArray[index] = temp;
+        }
+
     }
 
 }
