@@ -169,7 +169,7 @@ public class ArrayList implements List {
         public Object next() {
             int index = getNextRandomIndex(current);
             String element = array[indexArray[index]];
-            setIndex(index);
+            moveIndex(index);
             current--;
             return element;
         }
@@ -181,7 +181,7 @@ public class ArrayList implements List {
             return nextRandomIndex;
         }
 
-        private void setIndex(int index) {
+        private void moveIndex(int index) {
             int temp = indexArray[current];
             indexArray[current] = indexArray[index];
             indexArray[index] = temp;
