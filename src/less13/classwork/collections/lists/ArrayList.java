@@ -186,7 +186,7 @@ public class ArrayList implements List {
             indexArray[current] = indexArray[index];
             indexArray[index] = temp;
         }
-
+// 1 5 6 4. 2 3
     }
 
 }

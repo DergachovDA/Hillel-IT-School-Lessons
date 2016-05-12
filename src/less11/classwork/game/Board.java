@@ -5,14 +5,17 @@ import java.util.Arrays;
 class Board {
 
     private char[][] board = new char[3][3];
-    private char currentPlayer;
+
+    Player playerX;
+    Player playerO;
+    Player currentPlayer;
     private byte countsMoves;
 
     Board() {
         for (int i = 0; i < 3; i++) {
             Arrays.fill(board[i], ' ');
         }
-        currentPlayer = 'X';
+        currentPlayer = playerX;
         countsMoves = 0;
     }
 
@@ -20,7 +23,7 @@ class Board {
 
         if (countsMoves == 9) return true;
 
-        char ch = (currentPlayer == 'X') ? 'O' : 'X';
+        char ch = (currentPlayer.getType() == 'X') ? 'O' : 'X';
 
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == ch && board[i][1] == ch && board[i][2] == ch)
@@ -48,28 +51,28 @@ class Board {
         if (!isMoveValid(x, y))
 			return false;
 		
-		board[x][y] = currentPlayer;
+		board[x][y] = currentPlayer.getType();
         countsMoves++;
         changeCurrentPlayer();
         return true;
     }
 
     private void changeCurrentPlayer() {
-        if (currentPlayer == 'X')
-            currentPlayer = 'O';
+        if (currentPlayer.getType() == 'X')
+            currentPlayer = playerO;
         else
-            currentPlayer = 'X';
+            currentPlayer = playerX;
     }
 
     char getCurrentPlayer() {
-        return currentPlayer;
+        return currentPlayer.getType();
     }
 	
 	String getWinnerPlayer() {
         if (countsMoves == 9) {
             return "not defined";
         } else {
-            return currentPlayer == 'X' ? "O" : "X";
+            return currentPlayer.getType() == 'X' ? "O" : "X";
         }
     }
 
