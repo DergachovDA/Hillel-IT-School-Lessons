@@ -6,7 +6,6 @@ public class Player {
     private String firstname;
     private String middlename;
     private int age;
-
     private char type;
 
     public Player(String lastname, String firstname, String middlename, int age, char type) {
@@ -26,7 +25,7 @@ public class Player {
     }
 
     public String toString() {
-        return firstname + " " + lastname;
+        return firstname + " " + lastname + " (" + type + ")";
     }
 }
 

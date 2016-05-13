@@ -10,4 +10,12 @@ public class Statistics {
     public void addResult(GameResult result) {
         results.add(result);
     }
+
+    public String toString() {
+        String out = "";
+        for (GameResult gameResult : results) {
+            out += gameResult.toString() + '\n';
+        }
+        return out;
+    }
 }
