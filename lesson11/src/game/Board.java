@@ -5,17 +5,14 @@ import java.util.Arrays;
 class Board {
 
     private char[][] board = new char[3][3];
-
-    Player playerX;
-    Player playerO;
-    Player currentPlayer;
+    private char currentPlayer;
     private byte countsMoves;
 
     Board() {
         for (int i = 0; i < 3; i++) {
             Arrays.fill(board[i], ' ');
         }
-        currentPlayer = playerX;
+        currentPlayer = 'X';
         countsMoves = 0;
     }
 
@@ -23,7 +20,7 @@ class Board {
 
         if (countsMoves == 9) return true;
 
-        char ch = (currentPlayer.getType() == 'X') ? 'O' : 'X';
+        char ch = (currentPlayer == 'X') ? 'O' : 'X';
 
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == ch && board[i][1] == ch && board[i][2] == ch)
@@ -36,10 +33,10 @@ class Board {
         }
 
         if (board[0][0] == ch && board[1][1] == ch && board[2][2] == ch)
-                return true;
-             
+            return true;
+
         if (board[2][0] == ch && board[1][1] == ch && board[0][2] == ch)
-                return true;
+            return true;
 
         return false;
     }
@@ -49,35 +46,35 @@ class Board {
         int y = Character.getNumericValue(move.charAt(1)) - 1;
 
         if (!isMoveValid(x, y))
-			return false;
-		
-		board[x][y] = currentPlayer.getType();
+            return false;
+
+        board[x][y] = currentPlayer;
         countsMoves++;
         changeCurrentPlayer();
         return true;
     }
 
     private void changeCurrentPlayer() {
-        if (currentPlayer.getType() == 'X')
-            currentPlayer = playerO;
+        if (currentPlayer == 'X')
+            currentPlayer = 'O';
         else
-            currentPlayer = playerX;
+            currentPlayer = 'X';
     }
 
     char getCurrentPlayer() {
-        return currentPlayer.getType();
+        return currentPlayer;
     }
-	
-	String getWinnerPlayer() {
+
+    String getWinnerPlayer() {
         if (countsMoves == 9) {
             return "not defined";
         } else {
-            return currentPlayer.getType() == 'X' ? "O" : "X";
+            return currentPlayer == 'X' ? "O" : "X";
         }
     }
 
     private boolean isMoveValid(int x, int y) {
-        return  !(x > 2 || y > 2 || x < 0 || y < 0 || board[x][y] != ' ');
+        return !(x > 2 || y > 2 || x < 0 || y < 0 || board[x][y] != ' ');
     }
 
     void printBoard() {
