@@ -45,16 +45,16 @@ public class Main {
                 case "start":
                     System.out.println("Game started...");
 
-                    Player playerX = new Player("Ivanov", "Ivan", "Petrovich", 25, 'X');
-                    Player playerO = new Player("Petrov", "Petr", "Petrovich", 35, 'O');
+                    Player playerX = new Human("Ivanov", "Ivan", "Petrovich", 25, 'X');
+                    Player playerO = new Ai("Petrov", "Petr", "Petrovich", 35, 'O');
 
                     Board board = new Board(playerX, playerO);
 
                     while (!board.gameFinished()) {
                         System.out.println("Player " + board.getCurrentPlayer() + " move...");
                         System.out.println("Enter your move: ");
-                        String move = scanner.next();
-                        if (!board.makeMove(move)) {
+                        //String move = scanner.next();
+                        if (!board.makeMove()) {
                             System.out.println("Input incorrect! Repeat your move.");
                         } else {
                             System.out.println(board);

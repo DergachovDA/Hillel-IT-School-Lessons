@@ -48,7 +48,8 @@ class Board {
         return false;
     }
 
-    boolean makeMove(String move) {
+    boolean makeMove() {
+        String move = currentPlayer.makeMove();
         if (move.length() != 2) return false;
         int x = Character.getNumericValue(move.charAt(0)) - 1;
         int y = Character.getNumericValue(move.charAt(1)) - 1;
