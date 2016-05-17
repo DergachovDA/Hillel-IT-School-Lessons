@@ -9,7 +9,12 @@ public class Statistics {
     private List<GameResult> results = new ArrayList<GameResult>();
 
     public void addResult(GameResult result) {
-        results.add(result);
+        this.results.add(result);
+    }
+
+    public void addAll(Statistics statistics) {
+        for (GameResult result : statistics.results)
+            this.results.add(result);
     }
 
     public Statistics getAllWins() {
