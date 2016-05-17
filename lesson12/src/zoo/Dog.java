@@ -2,10 +2,10 @@ package zoo;
 
 public class Dog extends Animal {
 
-    Dog() {
-        name = "Pluto";
-        age = 3;
-        weight = 10;
+    Dog(String name, int age, int weight) {
+        setName(name);
+        setAge(age);
+        setWeight(weight);
     }
 
     public void voice() {

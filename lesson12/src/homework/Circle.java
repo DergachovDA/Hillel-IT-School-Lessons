@@ -1,6 +1,6 @@
 package homework;
 
-class Circle implements Shape {
+class Circle extends Shape {
 
     private int radius;
 
@@ -16,8 +16,8 @@ class Circle implements Shape {
         return 2 * Math.PI * radius;
     }
 
-    public void print() {
-        System.out.println("The circle with a radius: " + radius);
+    public String toString() {
+        return "The circle with a radius: " + radius;
     }
 
 

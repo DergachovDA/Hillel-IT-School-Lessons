@@ -1,11 +1,19 @@
 package homework;
 
-interface Shape {
+public abstract class Shape {
 
-    double getArea();
 
-    double getPerimeter();
 
-    void print();
+    public double getArea() {
+        return -1;
+    }
+
+    public double getPerimeter() {
+        return -1;
+    }
+
+    public String toString() {
+        return "";
+    }
 
 }

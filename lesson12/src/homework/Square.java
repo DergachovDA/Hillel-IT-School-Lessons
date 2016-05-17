@@ -1,6 +1,6 @@
 package homework;
 
-class Square implements Shape {
+class Square extends Shape {
 
     private int side;
 
@@ -16,8 +16,8 @@ class Square implements Shape {
         return 2 * side;
     }
 
-    public void print() {
-        System.out.println("The square with a side: " + side);
+    public String toString() {
+        return "The square with a side: " + side;
     }
 
 }

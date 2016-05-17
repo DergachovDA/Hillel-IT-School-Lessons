@@ -2,10 +2,10 @@ package zoo;
 
 public class Parrot extends Animal {
 
-    Parrot() {
-        name = "Blue Parrot";
-        age = 6;
-        weight = 1;
+    Parrot(String name, int age, int weight) {
+        setName(name);
+        setAge(age);
+        setWeight(weight);
     }
 
     public void voice() {
