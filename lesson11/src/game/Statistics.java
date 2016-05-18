@@ -12,10 +12,10 @@ public class Statistics {
         this.results.add(result);
     }
 
-    public void addAll(Statistics statistics) {
-        for (GameResult result : statistics.results)
-            this.results.add(result);
-    }
+//    public void addAll(Statistics statistics) {
+//        for (GameResult result : statistics.results)
+//            this.results.add(result);
+//    }
 
     public Statistics getAllWins() {
         Statistics allWins = new Statistics();

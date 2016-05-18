@@ -9,6 +9,9 @@ public class Main {
         String input = "start";
         Scanner scanner = new Scanner(System.in);
         Statistics statistics = new Statistics();
+        Player playerX;
+        Player playerO;
+        Board board;
 
         while (true) {
             switch (input) {
@@ -22,16 +25,16 @@ public class Main {
                     break;
 
                 case "start":
+                    playerX = new Ai('X');
+                    playerO = new Ai('O');
+                    board = new Board(playerX, playerO);
+
                     System.out.println("Game started...");
-
-                    Player playerX = new Ai('X');
-                    Player playerO = new Ai('O');
-
-                    Board board = game(playerX, playerO);
+                    game(board);
 
                     System.out.println(board.getWinnerPlayer());
 
-                    statistics.addAll(getNewStatistics(board));
+                    addNewStatistics(board, statistics);
                     break;
             }
 
@@ -47,33 +50,26 @@ public class Main {
         System.out.println("\t\t  \"exit\"  to exit the application.");
     }
 
-    private static Statistics getNewStatistics(Board board) {
-        Statistics newStatistics = new Statistics();
+    private static void addNewStatistics(Board board, Statistics statistics) {
         if (board.calculateWinner() == null) {
-            newStatistics.addResult(new GameResult(board.getCurrentPlayer(), GameResult.DRAW));
-            newStatistics.addResult(new GameResult(board.getNextPlayer(), GameResult.DRAW));
+            statistics.addResult(new GameResult(board.getCurrentPlayer(), GameResult.DRAW));
+            statistics.addResult(new GameResult(board.getNextPlayer(), GameResult.DRAW));
         } else {
-            newStatistics.addResult(new GameResult(board.calculateWinner(), GameResult.WIN));
-            newStatistics.addResult(new GameResult(board.calculateLoser(), GameResult.LOSS));
+            statistics.addResult(new GameResult(board.calculateWinner(), GameResult.WIN));
+            statistics.addResult(new GameResult(board.calculateLoser(), GameResult.LOSS));
         }
-        return newStatistics;
     }
 
-    private static Board game(Player playerX, Player playerO) {
-
-        Board board = new Board(playerX, playerO);
-
+    private static void game(Board board) {
         while (!board.gameFinished()) {
             System.out.println("Player " + board.getCurrentPlayer() + " move...");
             System.out.println("Enter your move: ");
-            //String move = scanner.next();
             if (!board.makeMove()) {
                 System.out.println("Input incorrect! Repeat your move.");
             } else {
                 System.out.println(board);
             }
         }
-        return board;
     }
 
     private static void printStatistics(Statistics statistics) {
