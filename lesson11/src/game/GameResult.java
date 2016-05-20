@@ -20,6 +20,18 @@ public class GameResult {
         this.date = new Date();
     }
 
+    @Override //generate IDEA
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        GameResult that = (GameResult) o;
+
+        if (!player.equals(that.player)) return false;
+        if (!result.equals(that.result)) return false;
+        return date.equals(that.date);
+    }
+
     public String getResult() {
         return this.result;
     }

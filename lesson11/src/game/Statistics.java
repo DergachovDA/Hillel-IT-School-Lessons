@@ -7,15 +7,20 @@ import java.util.List;
 public class Statistics {
 
     private List<GameResult> results = new ArrayList<GameResult>();
+    private static Statistics instance;
+
+    private Statistics() {
+    }
+
+    public static Statistics getInstance() {
+        if (instance == null)
+            instance = new Statistics();
+        return instance;
+    }
 
     public void addResult(GameResult result) {
         this.results.add(result);
     }
-
-//    public void addAll(Statistics statistics) {
-//        for (GameResult result : statistics.results)
-//            this.results.add(result);
-//    }
 
     public Statistics getAllWins() {
         Statistics allWins = new Statistics();

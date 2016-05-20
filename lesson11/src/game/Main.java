@@ -8,7 +8,7 @@ public class Main {
 
         String input = "start";
         Scanner scanner = new Scanner(System.in);
-        Statistics statistics = new Statistics();
+        Statistics statistics = Statistics.getInstance();
         Player playerX;
         Player playerO;
         Board board;
