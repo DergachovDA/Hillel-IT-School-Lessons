@@ -21,7 +21,7 @@ public class Person {
             return false;
         }
 
-        if (obj.getClass() != Person.class) {
+        if (obj.getClass() != this.getClass()) {
             return false;
         }
 
