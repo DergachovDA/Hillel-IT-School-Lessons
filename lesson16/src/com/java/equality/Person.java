@@ -29,7 +29,7 @@ public class Person {
 
         if (this.lastname == null || this.firstname == null)
             return false;
-        
+
         if (this.lastname.equals(person.lastname))
             if (this.firstname.equals(person.firstname))
                 if (this.age == person.age)
