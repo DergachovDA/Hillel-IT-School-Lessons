@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package homework.sorter;
 
 public class Sorter {
@@ -79,3 +80,10 @@ public class Sorter {
     }
 
 }
+=======
+package homework.sorter;
+
+public class Sorter {
+
+}
+>>>>>>> 132445e410abcb9aa6088b7a14e926069cc8ff15
