@@ -1,5 +1,4 @@
 package game;
-
 import java.util.Arrays;
 
 class Board {
