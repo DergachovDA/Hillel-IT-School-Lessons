@@ -1,16 +1,16 @@
 package com.java.hillel.linked;
 
-public class CustomLinkedList {
+public class CustomLinkedList<E> {
 
     private Node first;
     private Node last;
 
     private class Node {
-        String value;
+        E value;
         Node next;
     }
 
-    public void add(String value) {
+    public void add(E value) {
         Node node = new Node();
         node.value = value;
         node.next = null;
@@ -24,13 +24,13 @@ public class CustomLinkedList {
         }
     }
 
-    public String poll() {
-        String out = first.value;
+    public E poll() {
+        E out = first.value;
         first = first.next;
         return out;
     }
 
-    public String peek() {
+    public E peek() {
         return first.value;
     }
 }
