@@ -29,4 +29,8 @@ public class CustomLinkedList {
         first = first.next;
         return out;
     }
+
+    public String peek() {
+        return first.value;
+    }
 }

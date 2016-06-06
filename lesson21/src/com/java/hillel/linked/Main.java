@@ -8,6 +8,8 @@ public class Main {
         list.add("b");
         list.add("c");
 
+        System.out.println(list.peek());
+
         System.out.println(list.poll());
         System.out.println(list.poll());
         System.out.println(list.poll());
