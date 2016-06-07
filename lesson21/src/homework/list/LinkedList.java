@@ -46,6 +46,20 @@ public class LinkedList<E>{
         Node next;
     }
 
+    public boolean isLoop() {
+        Node n = this.first;
+
+        while (n != null) {
+            if (n.next == n.next.previous) {
+                n = n.next;
+            } else {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void add(E value) {
         Node node = new Node();
         node.value = value;

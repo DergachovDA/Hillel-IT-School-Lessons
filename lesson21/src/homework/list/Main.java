@@ -6,7 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LinkedList<String> list = new LinkedList<>();
+        LinkedList<String> list = new LinkedList<>(LinkedList.LOOP);
+
+        boolean check = list.isLoop();
+        System.out.println(check);
+
+        /*
         list.add("a");
         list.add("b");
         list.add("c");
@@ -16,6 +21,6 @@ public class Main {
         while (it.hasNext()) {
             System.out.println(it.next());
         }
-
+        */
     }
 }
