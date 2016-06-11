@@ -2,7 +2,7 @@ package homework.list;
 
 import java.util.Iterator;
 
-public class LinkedList<E>{
+public class LinkedList<E> {
 
     private Node first;
     private Node last;
@@ -58,6 +58,25 @@ public class LinkedList<E>{
         }
 
         return false;
+    }
+
+    public boolean isLoopRabbitAndTortoise() {
+        if (this.first == null) {
+            return false;
+        }
+
+        Node tortoise = first;
+        Node rabbit = first.next;
+
+        while (rabbit != tortoise && rabbit.next != tortoise) {
+            if (rabbit == null || rabbit.next == null) {
+                return false;
+            }
+            tortoise = tortoise.next;
+            rabbit = rabbit.next.next;
+        }
+
+        return true;
     }
 
     public void add(E value) {

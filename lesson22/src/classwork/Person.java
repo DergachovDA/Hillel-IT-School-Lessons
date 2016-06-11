@@ -1,3 +1,5 @@
+package classwork;
+
 public class Person implements Comparable {
 
     private String name;
@@ -47,7 +49,7 @@ public class Person implements Comparable {
     }
 
 //    public int compareTo(Object o) {
-//        Person p = (Person) o;
+//        classwork.Person p = (classwork.Person) o;
 //        return this.name.compareTo(p.name);
 //    }
 }
