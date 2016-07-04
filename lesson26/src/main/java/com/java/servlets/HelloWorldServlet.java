@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class WelcomeServlet extends HttpServlet {
-
+public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
@@ -16,7 +15,7 @@ public class WelcomeServlet extends HttpServlet {
         writer.println("<head>");
         writer.println("</head>");
         writer.println("<body>");
-        writer.println("<p>Hello Servlet.</p>");
+        writer.println("<p>Hello World</p>");
         writer.println("</body>");
         writer.println("</html>");
     }
