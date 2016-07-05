@@ -9,22 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public enum  BDUniversity {
-
-    UNIVERSITY();
+public class BDUniversity {
 
     private Connection connection;
+    private static BDUniversity instance;
 
-    public boolean connect() throws IOException, SQLException {
-        Properties properties = this.loadProperties();
+    private BDUniversity() {
+        try {
+            isConnect();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-        Connection connection = DriverManager.
+    public static BDUniversity getInstance() {
+        if (instance == null)
+            instance = new BDUniversity();
+        return instance;
+    }
+
+    private boolean isConnect() throws IOException, SQLException {
+        Properties properties = loadProperties();
+
+        this.connection = DriverManager.
                 getConnection(properties.getProperty("url"),
                         properties.getProperty("username"),
                         properties.getProperty("password"));
 
-
-        this.connection = connection;
         return true;
     }
 
@@ -36,7 +49,7 @@ public enum  BDUniversity {
     }
 
     public List<Student> getStudents() throws SQLException {
-        String sql = "SELECT lastname, firsname, age FROM students";
+        String sql = "SELECT lastname, firstname, age FROM students";
         Statement statement = connection.createStatement();
         statement.execute(sql);
 

@@ -17,14 +17,14 @@ public class JDBCTest {
                         properties.getProperty("password"));
 
 //        jdbcTest.addStudent(connection);
-//        jdbcTest.printStudents(connection);
+        jdbcTest.printStudents(connection);
 //        jdbcTest.trasactionExample(connection);
-        jdbcTest.batchingExample(connection);
+//        jdbcTest.batchingExample(connection);
     }
 
     private Properties loadProperties() throws IOException{
         Properties properties = new Properties();
-        InputStream stream = getClass().getResourceAsStream("db.properties");
+        InputStream stream = this.getClass().getResourceAsStream("db.properties");
         properties.load(stream);
         return properties;
     }

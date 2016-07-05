@@ -23,7 +23,9 @@
             <version>6.0.2</version>
         </dependency>
     </dependencies>
+
 <build>
-    <finalName>servlets</finalName>
+    <finalName>University</finalName>
 </build>
+
 </project>

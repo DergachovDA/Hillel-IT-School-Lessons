@@ -10,33 +10,29 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 
 public class StudentsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        List<Student> students;
+        PrintWriter writer = resp.getWriter();
+        writer.println("<html>");
+        writer.println("<head>");
+        writer.println("</head>");
+        writer.println("<body>");
 
         try {
-            BDUniversity.UNIVERSITY.connect();
-            students = BDUniversity.UNIVERSITY.getStudents();
-
-            PrintWriter writer = resp.getWriter();
-            writer.println("<html>");
-            writer.println("<head>");
-            writer.println("</head>");
-            writer.println("<body>");
+            BDUniversity bd = BDUniversity.getInstance();
 
             writer.println("<table width=100% height=\"200px\" border=1>");
+
             writer.println("<tr>");
             writer.println("<td>Lastname</td>");
             writer.println("<td>Firstname</td>");
             writer.println("<td>Age</td>");
             writer.println("</tr>");
 
-            for (Student student : students) {
+            for (Student student : bd.getStudents()) {
                 writer.println("<tr>");
                 writer.println("<td>" + student.getLastname() + "</td>");
                 writer.println("<td>" + student.getFirstname() + "</td>");
@@ -45,16 +41,13 @@ public class StudentsServlet extends HttpServlet {
             }
 
             writer.println("</table>");
-            writer.println("</body>");
-            writer.println("</html>");
 
         } catch (SQLException e) {
-            PrintWriter writer = resp.getWriter();
-            writer.println("<html>");
-            writer.println("<head>");
-            writer.println("</head>");
-            writer.println("<body>");
+
             writer.println("<p>Error</p>");
+
+        } finally {
+
             writer.println("</body>");
             writer.println("</html>");
         }
