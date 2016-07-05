@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 public class StudentsServlet extends HttpServlet {
 
@@ -20,39 +21,41 @@ public class StudentsServlet extends HttpServlet {
         writer.println("<head>");
         writer.println("</head>");
         writer.println("<body>");
-
         try {
-            BDUniversity bd = BDUniversity.getInstance();
-
-            writer.println("<table width=100% height=\"200px\" border=1>");
-
-            writer.println("<tr>");
-            writer.println("<td>Lastname</td>");
-            writer.println("<td>Firstname</td>");
-            writer.println("<td>Age</td>");
-            writer.println("</tr>");
-
-            for (Student student : bd.getStudents()) {
-                writer.println("<tr>");
-                writer.println("<td>" + student.getLastname() + "</td>");
-                writer.println("<td>" + student.getFirstname() + "</td>");
-                writer.println("<td>" + student.getAge() + "</td>");
-                writer.println("</tr>");
-            }
-
-            writer.println("</table>");
-
+            writer.println(getStudentsTable());
         } catch (SQLException e) {
-
             writer.println("<p>Error</p>");
-
         } finally {
-
             writer.println("</body>");
             writer.println("</html>");
         }
+    }
 
+    private String getStudentsTable() throws SQLException {
+        BDUniversity bd = BDUniversity.getInstance();
+        List<Student> students = bd.getStudents();
 
+        String str = "";
+
+        str += "<table width=100% height=\"200px\" border=1>\n";
+
+        str += "<tr>\n";
+        str += "<td>Lastname</td>\n";
+        str += "<td>Firstname</td>\n";
+        str += "<td>Age</td>\n";
+        str += "</tr>\n";
+
+        for (Student student : students) {
+            str += "<tr>\n";
+            str += "<td>" + student.getLastname() + "</td>\n";
+            str += "<td>" + student.getFirstname() + "</td>\n";
+            str += "<td>" + student.getAge() + "</td>\n";
+            str += "</tr>\n";
+        }
+
+        str += "</table>\n";
+
+        return str;
     }
 
 }

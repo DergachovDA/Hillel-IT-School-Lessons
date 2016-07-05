@@ -33,7 +33,7 @@ public class BDUniversity {
     private boolean isConnect() throws IOException, SQLException {
         Properties properties = loadProperties();
 
-        this.connection = DriverManager.
+        connection = DriverManager.
                 getConnection(properties.getProperty("url"),
                         properties.getProperty("username"),
                         properties.getProperty("password"));
