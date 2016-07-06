@@ -25,6 +25,8 @@ public class BDUniversity {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -34,8 +36,9 @@ public class BDUniversity {
         return instance;
     }
 
-    private boolean isConnect() throws IOException, SQLException {
+    private boolean isConnect() throws IOException, SQLException, ClassNotFoundException {
         Properties properties = loadProperties();
+        Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(DB_URL,USER,PASS);
 //        connection = DriverManager.
 //                getConnection(properties.getProperty("url"),
