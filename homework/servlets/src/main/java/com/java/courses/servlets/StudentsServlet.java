@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class StudentsServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
@@ -21,10 +20,12 @@ public class StudentsServlet extends HttpServlet {
         writer.println("<head>");
         writer.println("</head>");
         writer.println("<body>");
+        writer.println("<h1>Students:</h1>");
         try {
             writer.println(getStudentsTable());
         } catch (SQLException e) {
             writer.println("<p>Error</p>");
+            e.printStackTrace();
         } finally {
             writer.println("</body>");
             writer.println("</html>");
@@ -37,7 +38,7 @@ public class StudentsServlet extends HttpServlet {
 
         String str = "";
 
-        str += "<table width=100% height=\"200px\" border=1>\n";
+        str += "<table width=100% height=\"100px\" border=1>\n";
 
         str += "<tr>\n";
         str += "<td>Lastname</td>\n";
