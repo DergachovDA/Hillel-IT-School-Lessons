@@ -11,6 +11,10 @@ import java.util.Properties;
 
 public class BDUniversity {
 
+    static final String DB_URL = "jdbc:mysql://revivalc.mysql.ukraine.com.ua:3306/revivalc_test?serverTimezone=UTC&useSSL=false";
+    static final String USER = "revivalc_test";
+    static final String PASS = "1234";
+
     private Connection connection;
     private static BDUniversity instance;
 
@@ -32,11 +36,11 @@ public class BDUniversity {
 
     private boolean isConnect() throws IOException, SQLException {
         Properties properties = loadProperties();
-
-        connection = DriverManager.
-                getConnection(properties.getProperty("url"),
-                        properties.getProperty("username"),
-                        properties.getProperty("password"));
+        connection = DriverManager.getConnection(DB_URL,USER,PASS);
+//        connection = DriverManager.
+//                getConnection(properties.getProperty("url"),
+//                        properties.getProperty("username"),
+//                        properties.getProperty("password"));
 
         return true;
     }
@@ -49,7 +53,7 @@ public class BDUniversity {
     }
 
     public List<Student> getStudents() throws SQLException {
-        String sql = "SELECT lastname, firstname, age FROM students";
+        String sql = "SELECT lastname, firstname, age FROM students;";
         Statement statement = connection.createStatement();
         statement.execute(sql);
 

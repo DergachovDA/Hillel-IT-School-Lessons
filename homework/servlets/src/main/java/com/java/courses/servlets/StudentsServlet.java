@@ -21,39 +21,42 @@ public class StudentsServlet extends HttpServlet {
         writer.println("<head>");
         writer.println("</head>");
         writer.println("<body>");
-        try {
-            writer.println(getStudentsTable());
-        } catch (SQLException e) {
-            writer.println("<p>Error</p>");
-        } finally {
-            writer.println("</body>");
-            writer.println("</html>");
-        }
+
+        writer.println(getStudentsTable());
+
+        writer.println("</body>");
+        writer.println("</html>");
     }
 
-    private String getStudentsTable() throws SQLException {
-        BDUniversity bd = BDUniversity.getInstance();
-        List<Student> students = bd.getStudents();
+    private String getStudentsTable() {
 
         String str = "";
 
-        str += "<table width=100% height=\"200px\" border=1>\n";
+        try {
+            BDUniversity bd = BDUniversity.getInstance();
+            List<Student> students = bd.getStudents();
 
-        str += "<tr>\n";
-        str += "<td>Lastname</td>\n";
-        str += "<td>Firstname</td>\n";
-        str += "<td>Age</td>\n";
-        str += "</tr>\n";
+            str += "<table width=100% height=\"200px\" border=1>\n";
 
-        for (Student student : students) {
             str += "<tr>\n";
-            str += "<td>" + student.getLastname() + "</td>\n";
-            str += "<td>" + student.getFirstname() + "</td>\n";
-            str += "<td>" + student.getAge() + "</td>\n";
+            str += "<td>Lastname</td>\n";
+            str += "<td>Firstname</td>\n";
+            str += "<td>Age</td>\n";
             str += "</tr>\n";
-        }
 
-        str += "</table>\n";
+            for (Student student : students) {
+                str += "<tr>\n";
+                str += "<td>" + student.getLastname() + "</td>\n";
+                str += "<td>" + student.getFirstname() + "</td>\n";
+                str += "<td>" + student.getAge() + "</td>\n";
+                str += "</tr>\n";
+            }
+
+            str += "</table>\n";
+
+        } catch (SQLException e) {
+            str = "<p>Error</p>";
+        }
 
         return str;
     }

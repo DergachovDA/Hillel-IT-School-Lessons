@@ -4,7 +4,7 @@ import com.java.courses.university.Student;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class TestStudents {
+public class TestBD {
     public static void main(String[] args) throws IOException, SQLException {
 
         BDUniversity bd = BDUniversity.getInstance();
