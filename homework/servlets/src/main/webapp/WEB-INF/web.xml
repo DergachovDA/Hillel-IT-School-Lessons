@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
     <servlet>
         <servlet-name>Welcome Servlet</servlet-name>
         <servlet-class>com.java.courses.servlets.WelcomeServlet</servlet-class>
@@ -14,7 +15,7 @@
 
     <servlet-mapping>
         <servlet-name>Welcome Servlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Students Servlet</servlet-name>

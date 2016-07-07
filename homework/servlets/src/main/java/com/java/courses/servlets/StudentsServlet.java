@@ -22,8 +22,9 @@ public class StudentsServlet extends HttpServlet {
         writer.println("</head>");
         writer.println("<body>");
 
+        writer.println("<h1>Students:</h1>");
         writer.println(getStudentsTable());
-
+        writer.println("<a href=\"University\"><- Back</a>");
         writer.println("</body>");
         writer.println("</html>");
     }
@@ -39,9 +40,9 @@ public class StudentsServlet extends HttpServlet {
             str += "<table width=100% height=\"200px\" border=1>\n";
 
             str += "<tr>\n";
-            str += "<td>Lastname</td>\n";
-            str += "<td>Firstname</td>\n";
-            str += "<td>Age</td>\n";
+            str += "<td><b>Lastname</b></td>\n";
+            str += "<td><b>Firstname</b></td>\n";
+            str += "<td><b>Age</b></td>\n";
             str += "</tr>\n";
 
             for (Student student : students) {
@@ -52,7 +53,7 @@ public class StudentsServlet extends HttpServlet {
                 str += "</tr>\n";
             }
 
-            str += "</table>\n";
+            str += "</table>";
 
         } catch (SQLException e) {
             str = "<p>Error</p>";
