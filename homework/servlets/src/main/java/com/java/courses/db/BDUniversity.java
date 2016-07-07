@@ -1,11 +1,13 @@
 package com.java.courses.db;
 
+import com.java.courses.university.Grade;
 import com.java.courses.university.Student;
 import com.java.courses.university.Subject;
 import com.java.courses.university.Teacher;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.management.GarbageCollectorMXBean;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +99,29 @@ public class BDUniversity {
         }
 
         return subjects;
+    }
+
+    public List<Grade> getGrades() throws SQLException {
+        String sql = "SELECT st.firstname, st.lastname, su.name, g.grade " +
+                "FROM grades AS g " +
+                "INNER JOIN students AS st ON st.id = g.student_id " +
+                "INNER JOIN subjects AS su ON su.id = g.subject_id";
+        Statement statement = connection.createStatement();
+        statement.execute(sql);
+
+        ResultSet resultSet = statement.getResultSet();
+        List<Grade> grades = new ArrayList<Grade>();
+
+        while (resultSet.next()) {
+            String firstname = resultSet.getString("firstname");
+            String lastname = resultSet.getString("lastname");
+            String name = resultSet.getString("name");
+            int grade = resultSet.getInt("grade");
+
+            grades.add(new Grade(new Student(lastname, firstname), new Subject(name), grade));
+        }
+
+        return grades;
     }
 
 }

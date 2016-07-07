@@ -12,6 +12,12 @@ public class Student {
         this.age = age;
     }
 
+    public Student(String lastname, String firstname) {
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.age = 0;
+    }
+
     public String getLastname() {
         return lastname;
     }

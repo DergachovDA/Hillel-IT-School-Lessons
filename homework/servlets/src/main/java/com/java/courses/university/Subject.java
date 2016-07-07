@@ -11,6 +11,12 @@ public class Subject {
         this.teacher = teacher;
     }
 
+    public Subject(String name) {
+        this.name = name;
+        this.hours = 0;
+        this.teacher = null;
+    }
+
     public String getName() {
         return name;
     }

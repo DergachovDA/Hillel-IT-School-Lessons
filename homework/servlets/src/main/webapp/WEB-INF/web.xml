@@ -16,6 +16,10 @@
         <servlet-name>Subjects Servlet</servlet-name>
         <servlet-class>com.java.courses.servlets.SubjectsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Grades Servlet</servlet-name>
+        <servlet-class>com.java.courses.servlets.GradesServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>Welcome Servlet</servlet-name>
@@ -28,6 +32,10 @@
     <servlet-mapping>
         <servlet-name>Subjects Servlet</servlet-name>
         <url-pattern>/subjects</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Grades Servlet</servlet-name>
+        <url-pattern>/grades</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -1,4 +1,5 @@
 import com.java.courses.db.BDUniversity;
+import com.java.courses.university.Grade;
 import com.java.courses.university.Student;
 import com.java.courses.university.Subject;
 
@@ -23,6 +24,14 @@ public class TestBD {
             System.out.print(subject.getHours() + " / ");
             System.out.print(subject.getTeacher().getLastname() + " / ");
             System.out.print(subject.getTeacher().getFirstname() + "\n");
+        }
+
+        System.out.println("Get grades from BD:");
+        for (Grade grade : bd.getGrades()) {
+            System.out.print(grade.getStudent().getLastname() + " / ");
+            System.out.print(grade.getStudent().getLastname() + " / ");
+            System.out.print(grade.getSubject().getName() + " / ");
+            System.out.print(grade.getGrade() + "\n");
         }
     }
 }
