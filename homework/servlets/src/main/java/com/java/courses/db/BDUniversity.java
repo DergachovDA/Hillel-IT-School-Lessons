@@ -1,6 +1,8 @@
 package com.java.courses.db;
 
 import com.java.courses.university.Student;
+import com.java.courses.university.Subject;
+import com.java.courses.university.Teacher;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,4 +76,27 @@ public class BDUniversity {
 
         return students;
     }
+
+    public List<Subject> getSubjects() throws SQLException {
+        String sql = "SELECT subjects.name, subjects.hours, teachers.lastname, teachers.firstname " +
+                "FROM subjects " +
+                "INNER JOIN teachers ON subjects.teacher_id = teachers.id ";
+        Statement statement = connection.createStatement();
+        statement.execute(sql);
+
+        ResultSet resultSet = statement.getResultSet();
+        List<Subject> subjects = new ArrayList<Subject>();
+
+        while (resultSet.next()) {
+            String name = resultSet.getString("name");
+            int hours = resultSet.getInt("hours");
+            String lastname = resultSet.getString("lastname");
+            String firstname = resultSet.getString("firstname");
+
+            subjects.add(new Subject(name, hours, new Teacher(lastname, firstname)));
+        }
+
+        return subjects;
+    }
+
 }
