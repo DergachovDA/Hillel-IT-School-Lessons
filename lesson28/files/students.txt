@@ -1,0 +1,14 @@
+Student:
+Lastname: Ivanov
+Firstname: Ivan
+Age: 19
+
+Student:
+Lastname: Petrov
+Firstname: Petr
+Age: 17
+
+Student:
+Lastname: Semenov
+Firstname: Semen
+Age: 21
