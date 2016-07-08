@@ -1,3 +1,5 @@
+package classwork;
+
 import java.io.*;
 
 public class CopyLines {

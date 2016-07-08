@@ -1,3 +1,5 @@
+package classwork;
+
 import java.io.Serializable;
 
 public class Dog implements Serializable{
@@ -11,7 +13,7 @@ public class Dog implements Serializable{
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "homework.classwork.Dog{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';

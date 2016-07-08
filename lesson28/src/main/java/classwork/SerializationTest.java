@@ -1,9 +1,11 @@
+package classwork;
+
 import java.io.*;
 
 public class SerializationTest {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-//        Dog dog = new Dog("Phluffy", 3);
+//        homework.classwork.Dog dog = new homework.classwork.Dog("Phluffy", 3);
 //        serializeDog(dog);
         Dog dog = desrrializaDog();
         System.out.println(dog);
