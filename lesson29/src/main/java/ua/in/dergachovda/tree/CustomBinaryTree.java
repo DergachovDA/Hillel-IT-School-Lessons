@@ -32,7 +32,7 @@ public class CustomBinaryTree {
         }
     }
 
-    public String getNode (int key) {
+    public String getValue (int key) {
 
         Node currentNode = root;
 
@@ -57,6 +57,17 @@ public class CustomBinaryTree {
 
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
+    public void output(Node currentNode) {
+        if (currentNode == null) return;
+        output(currentNode.leftChild);
+        System.out.println(currentNode);
+        output(currentNode.rightChild);
+    }
+
     class Node {
         int key;
         String value;
@@ -66,6 +77,11 @@ public class CustomBinaryTree {
         public Node(int key, String value) {
             this.key = key;
             this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return "{" + key + ", " + value + "}";
         }
     }
 }

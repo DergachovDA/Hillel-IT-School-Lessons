@@ -10,7 +10,9 @@ public class BinaryTreeTest {
         tree.addNode(12, "Cat");
         tree.addNode(7, "Cat");
 
-        System.out.println(tree.getNode(5));
+        System.out.println(tree.getValue(5));
+
+        tree.output(tree.getRoot());
     }
 
 
