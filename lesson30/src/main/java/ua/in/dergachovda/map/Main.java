@@ -10,7 +10,7 @@ public class Main {
         map.put(student1, Grade.A);
         map.put(student2, Grade.B);
         map.put(student3, Grade.C);
-        
+
         System.out.println(student2 + " : " + map.get(student2));
     }
 
