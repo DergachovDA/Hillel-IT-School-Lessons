@@ -1,66 +1,66 @@
 package ua.in.dergachovda.map.homework;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WordCounter {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        Map<String, Integer> wordMap = getMapFromText(new FileReader("files" + File.separator + "input.txt"));
-        
-        writeMapToFile(new FileWriter("files" + File.separator + "output.txt"), wordMap);
+        try {
 
-    }
+            Map<String, Integer> words = getMapFromText(new FileReader("files" + File.separator + "input.txt"));
 
-    private static void writeMapToFile(FileWriter file, Map<String, Integer> map) throws IOException {
-        BufferedWriter writer = new BufferedWriter(file);
-        for (String word : map.keySet()) {
-            String out = word + " : " + map.get(word);
-//            System.out.println(out);
-            writer.write(out);
-            writer.newLine();
+            writeMapToFile(new FileWriter("files" + File.separator + "output.txt"), words);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        writer.close();
+
     }
 
-    private static Map<String, Integer> getMapFromText(FileReader file) throws IOException {
-        BufferedReader reader = new BufferedReader(file);
+    private static void writeMapToFile(FileWriter file, Map<String, Integer> map) {
+
+        try (BufferedWriter writer = new BufferedWriter(file)) {
+            for (String word : map.keySet()) {
+                writer.write(word + " : " + map.get(word));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Map<String, Integer> getMapFromText(FileReader file) {
 
         char[] chars = {'.', ',', '!', '?', '(', ')', ';', '\''};
         String line;
+        Map<String, Integer> words = new HashMap<String, Integer>();
 
-        ArrayList<String> wordList = new ArrayList<String>();
-
-        while ((line = reader.readLine()) != null) {
-            for (char ch : chars) {
-                line = line.replace(ch, ' ');
-            }
-
-            for (String word : line.split(" ")) {
-                if (word.length() < 3) {
-                    continue;
+        try (BufferedReader reader = new BufferedReader(file)) {
+            while ((line = reader.readLine()) != null) {
+                for (char ch : chars) {
+                    line = line.replace(ch, ' ');
                 }
-                wordList.add(word);
+
+                for (String word : line.split(" ")) {
+                    if (word.length() < 3) {
+                        continue;
+                    }
+
+                    int count = 1;
+                    if (words.containsKey(word)) {
+                        count += words.get(word);
+                    }
+
+                    words.put(word, count);
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        Map<String, Integer> wordMap = new HashMap<String, Integer>();
-
-        for (String word : wordList) {
-            if (wordMap.containsKey(word)) {
-                int count = wordMap.get(word) + 1;
-                wordMap.put(word, count);
-            } else {
-                wordMap.put(word, 1);
-            }
-        }
-
-        reader.close();
-
-        return wordMap;
+        return words;
     }
 }
