@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 class NewThread extends Thread {
     String file;
@@ -32,25 +33,28 @@ public class FileParserWithThreads {
     public static void main(String[] args) {
         WordCounter counter = new WordCounter();
 
-        String file1 =  PATH + "input1.txt";
-        String file2 =  PATH + "input2.txt";
-        String file3 =  PATH + "input3.txt";
-        String[] files = {file1, file2, file3};
-
-        NewThread[] threads = new NewThread[3];
-
-        for (int i = 0; i < 3; i++) {
-            threads[i] = new NewThread(files[i], counter);
-        }
+        readFromFiles(counter, "input1.txt", "input2.txt", "input3.txt");
 
         try {
-            for (NewThread thread : threads) {
-                thread.join();
-            }
             counter.writeMapToFile(new FileWriter(PATH + "output.txt"));
-
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void readFromFiles(WordCounter counter, String... files) {
+        ArrayList<NewThread> threads = new ArrayList<>();
+
+        for (int i = 0; i < files.length; i++) {
+            threads.add(new NewThread(PATH + files[i], counter));
+        }
+
+        for (NewThread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
