@@ -17,6 +17,7 @@ public class Main {
         Future<Integer> result = service2.submit(new AnotherTask());
         int sum = result.get();
         System.out.println("sum = " + sum);
+        service2.shutdown();
     }
 }
 
