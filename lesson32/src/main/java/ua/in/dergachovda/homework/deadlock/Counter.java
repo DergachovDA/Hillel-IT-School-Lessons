@@ -1,4 +1,4 @@
-package ua.in.dergachovda.homework;
+package ua.in.dergachovda.homework.deadlock;
 
 public class Counter {
     Object m1 = new Object();

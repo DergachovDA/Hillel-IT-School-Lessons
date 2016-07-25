@@ -1,4 +1,4 @@
-package ua.in.dergachovda.homework;
+package ua.in.dergachovda.homework.deadlock;
 
 public class CounterThreadDecrement implements Runnable{
 
