@@ -1,6 +1,6 @@
-package ua.in.dergachovda.races;
+package ua.in.dergachovda.homework;
 
-public class Races {
+public class DeadLock {
 
     public static void main(String[] args) throws InterruptedException {
         Counter counter = new Counter();

@@ -6,16 +6,16 @@ public class CounterSync {
 
     private int value;
 
-    public synchronized void increment() {
-//        synchronized (this) {
+    public void increment() {
+        synchronized (this) {
             value++;
-//        }
+        }
     }
 
-    public synchronized void decrement() {
-//        synchronized (this) {
+    public void decrement() {
+        synchronized (this) {
             value--;
-//        }
+        }
     }
 
     public int getValue() {
